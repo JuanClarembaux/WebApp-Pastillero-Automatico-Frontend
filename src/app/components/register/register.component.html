@@ -1,0 +1,26 @@
+<div class="tittle">
+  <h1>Register</h1>
+</div>
+
+<app-spinner *ngIf="loading"></app-spinner>
+
+<form [formGroup]="form" (ngSubmit)="register()">
+  <mat-grid-list cols="2" rowHeight="80px">
+    <mat-grid-tile>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput autocomplete="off">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input formControlName="password" matInput autocomplete="off">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+      <button type="submit" class="btn-aceptar" [disabled]="form.invalid" mat-raised-button color="primary">Registrar</button>
+      <button mat-raised-button routerLink="/login">Volver</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

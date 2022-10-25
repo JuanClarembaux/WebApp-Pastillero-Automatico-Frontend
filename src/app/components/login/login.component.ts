@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/interfaces/user';
+import { Usuario } from 'src/app/interfaces/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -16,17 +16,18 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private router: Router, private aRoute: ActivatedRoute) {
     this.form = this.fb.group({
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required]
+      MailUsuario: ['', Validators.required, Validators.email],
+      PasswordUsuario: ['', Validators.required]
     })
   }
 
   login(/*user: User*/){
-    const user: User = {
-      email: this.form.value.email,
-      password: this.form.value.password
+    const usuario: Usuario = {
+      MailUsuario: this.form.value.MailUsuario,
+      PasswordUsuario: this.form.value.PasswordUsuario,
+      RolUsuario: 'null',
     }
-    this.authService.login(user).subscribe((token: string) =>{
+    this.authService.login(usuario).subscribe((token: string) =>{
       localStorage.setItem('authToken', token);
       this.mensajeExito();
       this.router.navigate(['/listadoProducto']);

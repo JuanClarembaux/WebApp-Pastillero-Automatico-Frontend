@@ -1,8 +1,10 @@
 export interface Producto
 {
-  id?: number,
-  nombre: string,
-  descripcion: string,
-  precio: number,
-  stock: number,
+  idProducto?: number,
+  nombreProducto: string,
+  marcaProducto: string,
+  descripcionProducto: string,
+  categoriaProducto: string,
+  precioProducto: number,
+  skuProducto: string,
 }

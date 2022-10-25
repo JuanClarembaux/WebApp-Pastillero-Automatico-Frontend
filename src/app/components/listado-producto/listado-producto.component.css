@@ -30,3 +30,38 @@ td, th
   font-size: 10px;
   line-height: 28px;
 }
+
+
+
+
+
+.example-card {
+}
+
+.example-header-image {
+  max-width: 120px;
+  padding: 16px;
+  background-size: cover;
+}
+
+
+mat-toolbar {
+    justify-content: space-between;
+}
+
+.content {
+  padding: 50px;
+  max-width: fit-content;
+  max-height: min-content;
+}
+
+.content > mat-card {
+    margin-bottom: 16px;
+}
+
+.card-button{
+  font-size: 14px;
+  width: 150px;
+  line-height: 14px;
+  padding: 10px;
+}

@@ -1,26 +1,16 @@
-<div class="tittle">
-  <h1>Register</h1>
-</div>
-
 <app-spinner *ngIf="loading"></app-spinner>
 
-<form [formGroup]="form" (ngSubmit)="register()">
-  <mat-grid-list cols="2" rowHeight="80px">
-    <mat-grid-tile>
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input formControlName="email" matInput autocomplete="off">
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-form-field appearance="outline">
-        <mat-label>Contraseña</mat-label>
-        <input formControlName="password" matInput autocomplete="off">
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="2">
-      <button type="submit" class="btn-aceptar" [disabled]="form.invalid" mat-raised-button color="primary">Registrar</button>
-      <button mat-raised-button routerLink="/login">Volver</button>
-    </mat-grid-tile>
-  </mat-grid-list>
+<form class="login-form" [formGroup]="form" (ngSubmit)="register()">
+  <p class="login-text">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-user fa-stack-1x"></i>
+    </span>
+  </p>
+  <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" formControlName="MailUsuario" matInput autocomplete="off">
+  <input type="password" class="login-password" required="true" placeholder="Password" formControlName="PasswordUsuario" matInput autocomplete="off">
+  <button type="submit" class="btn-ingresar" [disabled]="form.invalid" mat-raised-button color="primary">Registrar</button>
 </form>
+<button class="registrarse-button" mat-raised-button routerLink="/login">Volver</button>
+<div class="underlay-photo"></div>
+<div class="underlay-black"></div>

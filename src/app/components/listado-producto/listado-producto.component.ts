@@ -14,7 +14,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class ListadoProductoComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['nombre', 'descripcion', 'precio', 'stock', 'acciones'];
+  displayedColumns: string[] = ['nombreProducto', 'marcaProducto', 'descripcionProducto', 'categoriaProducto', 'precioProducto', 'skuProducto', 'acciones'];
   dataSource = new MatTableDataSource<Producto>();
   loading: boolean = false;
 
@@ -83,4 +83,15 @@ export class ListadoProductoComponent implements OnInit, AfterViewInit {
       verticalPosition: 'top'
     });
   }
+
+
+
+  gridColumns = 3;
+
+  toggleGridColumns() {
+    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
+  }
+
+
+
 }

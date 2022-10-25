@@ -1,0 +1,133 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700);
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+body,
+html {
+  height: 100%;
+}
+body {
+  font-family: "Open Sans";
+  font-weight: 100;
+  display: flex;
+  overflow: hidden;
+}
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  ::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  :-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  :focus {
+    outline: 0 transparent solid;
+  }::-webkit-input-placeholder {
+      color: rgba(0, 0, 0, 0.7);
+    }
+    ::-moz-placeholder {
+      color: rgba(0, 0, 0, 0.7);
+    }
+    :-ms-input-placeholder {
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+.login-form {
+  background: rgb(204, 204, 204);
+  box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+  min-height: 10rem;
+  margin: auto;
+  max-width: 50%;
+  padding: 0.5rem;
+}
+.login-text {
+  background: rgb(0, 0, 0);
+  border-bottom: .5rem solid rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  margin: 0 auto;
+  max-width: 50%;
+  padding: 0.5rem;
+  text-align: center;
+  text-shadow: 1px -1px 0 rgba(0,0,0,0.3);
+}.fa-stack-1x {
+    color: black;
+  }
+
+.login-username,
+.login-password {
+  background: white;
+  border: 0 solid;
+  border-bottom: 1px solid rgba(white, 1);
+  color: rgb(0, 0, 0);
+  display: block;
+  margin:2rem;
+  padding: 1rem;
+  transition: 250ms background ease-in;
+  width: calc(100% - 6rem);
+}:focus {
+    background: white;
+    color: black;
+    transition: 250ms background ease-in;
+  }
+
+.registrarse-button {
+  border-bottom: 1px solid rgb(255, 255, 255);
+  bottom: 0;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: block;
+  font-size: 90%;
+  left: 0;
+  opacity: 0.4;
+  padding: 0.5rem;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}:hover {
+    opacity: 2;
+  }
+
+.btn-ingresar {
+  border: 1px solid rgb(0, 0, 0);
+  background: black;
+  color: white(0, 0, 0);
+  display: block;
+  margin: 1rem auto;
+  min-width: 80px;
+  padding: 0.25rem;
+  transition: 250ms background ease-in;
+}:hover,
+  :focus {
+    background: white;
+    color: black;
+    transition: 250ms background ease-in;
+  }
+
+[class*="underlay"] {
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
+  top: 0;
+}
+.underlay-photo {
+  animation: hue-rotate 6s infinite;
+  background: url("../../../../images/Pastillas.jpg");
+  background-size: cover;
+  z-index: -1;
+}
+.underlay-black {
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+@keyframes hue-rotate {
+  from {
+    -webkit-filter: grayscale(30%) hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: grayscale(30%) hue-rotate(360deg);
+  }
+}

@@ -14,25 +14,37 @@
         <mat-grid-tile>
           <mat-form-field appearance="outline">
             <mat-label>Nombre del Producto</mat-label>
-            <input formControlName="nombre" matInput autocomplete="off">
+            <input formControlName="nombreProducto" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Marca del Producto</mat-label>
+            <input formControlName="marcaProducto" matInput autocomplete="off">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-form-field appearance="outline">
             <mat-label>Descripcion del Producto</mat-label>
-            <input formControlName="descripcion" matInput autocomplete="off">
+            <input formControlName="descripcionProducto" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Categoria del Producto</mat-label>
+            <input formControlName="categoriaProducto" matInput autocomplete="off">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-form-field appearance="outline">
             <mat-label>Precio del Producto</mat-label>
-            <input type="number" formControlName="precio" matInput autocomplete="off">
+            <input type="number" formControlName="precioProducto" matInput autocomplete="off">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-form-field appearance="outline">
-            <mat-label>Stock del Producto</mat-label>
-            <input type="number" formControlName="stock" matInput autocomplete="off">
+            <mat-label>SKU del Producto</mat-label>
+            <input formControlName="skuProducto" matInput autocomplete="off">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="2">

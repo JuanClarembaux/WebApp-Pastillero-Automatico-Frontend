@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/interfaces/user';
+import { Usuario } from 'src/app/interfaces/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -16,17 +16,18 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private router: Router, private aRoute: ActivatedRoute) {
     this.form = this.fb.group({
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required]
+      MailUsuario: ['', Validators.required, Validators.email],
+      PasswordUsuario: ['', Validators.required]
     })
   }
 
   register(/*user: User*/){
-    const user: User = {
-      email: this.form.value.email,
-      password: this.form.value.password
+    const usuario: Usuario = {
+      MailUsuario: this.form.value.MailUsuario,
+      PasswordUsuario: this.form.value.PasswordUsuario,
+      RolUsuario: 'null',
     }
-    this.authService.register(user).subscribe(data => {
+    this.authService.register(usuario).subscribe(data => {
       this.mensajeExito();
       this.router.navigate(['/login']);
     });

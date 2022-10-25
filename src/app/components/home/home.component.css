@@ -1,0 +1,69 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700);
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+html, body{
+  height: 100%;
+}
+body {
+  font-family: "Open Sans";
+  font-weight: 100;
+  display: flex;
+  overflow: hidden;
+}
+
+h2{
+  margin: 0;
+  padding: 2rem;
+}
+
+.container{
+  background-color: rgb(22, 22, 22);
+  padding: 1rem;
+  width: 80%;
+  height: 95%;
+}
+
+.section{
+  margin: 1rem;
+  padding: 1rem;
+  float: left;
+  width: 45%;
+  height: 90%;
+  cursor: pointer;
+}
+
+#store-section{
+  background: url("../../../../images/imagen-tienda.jpg");
+  margin-right: 1.5rem;
+}
+#about-us-section{
+  background: url("../../../../images/imagen.contacto.jpg");
+}
+
+[class*="underlay"] {
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.underlay-photo {
+  animation: hue-rotate 6s infinite;
+  background: url("../../../../images/fondo-negro-home-page.jpg");
+  background-size: cover;
+  z-index: -1;
+}
+.underlay-black {
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+@keyframes hue-rotate {
+  from {
+    -webkit-filter: grayscale(30%) hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: grayscale(30%) hue-rotate(360deg);
+  }
+}

@@ -19,10 +19,12 @@ export class AgregarEditarProductoComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private _productoService: ProductoService, private router: Router, private aRoute: ActivatedRoute) {
     this.form = this.fb.group({
-      nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      precio: ['', Validators.required],
-      stock: ['', Validators.required]
+      nombreProducto: ['', Validators.required],
+      marcaProducto: ['', Validators.required],
+      descripcionProducto: ['', Validators.required],
+      categoriaProducto: ['', Validators.required],
+      precioProducto: ['', Validators.required],
+      skuProducto: ['']
     })
 
     this.id = Number(this.aRoute.snapshot.paramMap.get('id'));
@@ -41,10 +43,12 @@ export class AgregarEditarProductoComponent implements OnInit {
 
     this._productoService.getProducto(id).subscribe( data => {
       this.form.patchValue({
-        nombre: data.nombre,
-        descripcion: data.descripcion,
-        precio: data.precio,
-        stock: data.stock
+        nombreProducto: data.nombreProducto,
+        marcaProducto: data.marcaProducto,
+        descripcionProducto: data.descripcionProducto,
+        categoriaProducto: data.categoriaProducto,
+        precioProducto: data.precioProducto,
+        skuProducto: data.skuProducto
       })
       this.loading = false;
     })
@@ -57,14 +61,16 @@ export class AgregarEditarProductoComponent implements OnInit {
 
     // Armamos el objeto a enviar
     const producto: Producto = {
-      nombre: this.form.value.nombre,
-      descripcion: this.form.value.descripcion,
-      precio: this.form.value.precio,
-      stock: this.form.value.stock
+      nombreProducto: this.form.value.nombreProducto,
+      marcaProducto: this.form.value.marcaProducto,
+      descripcionProducto: this.form.value.descripcionProducto,
+      categoriaProducto: this.form.value.categoriaProducto,
+      precioProducto: this.form.value.precioProducto,
+      skuProducto: this.form.value.skuProducto
     }
 
     if(this.id != 0){
-      producto.id = this.id;
+      producto.idProducto = this.id;
       this.editarProducto(this.id, producto);
     }
     else{

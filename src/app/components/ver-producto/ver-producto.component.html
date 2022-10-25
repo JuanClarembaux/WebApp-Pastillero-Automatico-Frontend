@@ -7,12 +7,14 @@
 <div *ngIf="producto != null" class="container">
 <mat-card class="card">
   <!--- {{producto | json}}  Sirve para ver todos los datos del objeto --->
-  <mat-card-title>Pastillero</mat-card-title>
+  <mat-card-title>{{producto.nombreProducto}}</mat-card-title>
   <mat-card-content>
-    <p><strong>Nombre:</strong> {{producto.nombre}}</p>
-    <p><strong>Descripcion:</strong> {{producto.descripcion}}</p>
-    <p><strong>Precio:</strong> ${{producto.precio}}</p>
-    <p><strong>Stock:</strong> {{producto.stock}}</p>
+    <p><strong>Nombre:</strong> {{producto.nombreProducto}}</p>
+    <p><strong>Marca:</strong> {{producto.marcaProducto}}</p>
+    <p><strong>Descripcion:</strong> {{producto.descripcionProducto}}</p>
+    <p><strong>Categoria:</strong> {{producto.categoriaProducto}}</p>
+    <p><strong>Precio:</strong> ${{producto.precioProducto}}</p>
+    <p><strong>Stock:</strong> {{producto.skuProducto}}</p>
   </mat-card-content>
   <mat-card-actions>
     <button routerLink="/listadoProducto" mat-raised-button>Volver</button>

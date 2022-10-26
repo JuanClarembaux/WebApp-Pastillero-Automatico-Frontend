@@ -32,4 +32,8 @@ export class ProductoService {
   updateProducto(id: number, producto: Producto): Observable<void>{
     return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, producto);
   }
+
+  generarPDF(producto: Producto): Observable<void>{
+    return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}/facturaPDF`, producto);
+  }
 }

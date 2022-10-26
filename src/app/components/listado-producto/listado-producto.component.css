@@ -32,7 +32,14 @@ td, th
 }
 
 
+.registrarse-button{
+  float: left;
+}
 
+
+.logout-button{
+  float: right;
+}
 
 
 .example-card {

@@ -22,16 +22,25 @@ export class LoginComponent implements OnInit {
   }
 
   login(/*user: User*/){
+    this.loading = true;
+
     const usuario: Usuario = {
       MailUsuario: this.form.value.MailUsuario,
       PasswordUsuario: this.form.value.PasswordUsuario,
       RolUsuario: 'null',
     }
-    this.authService.login(usuario).subscribe((token: string) =>{
-      localStorage.setItem('authToken', token);
-      this.mensajeExito();
-      this.router.navigate(['/listadoProducto']);
-    });
+    this.authService.login(usuario).subscribe({
+      next: (token: string) => {
+        this.loading = false;
+        localStorage.setItem('authToken', token);
+        this.mensajeExito();
+        this.router.navigate(['/home']);
+      },
+      error: (e) => {
+        this.loading = false;
+        alert('Mail o Password incorrecto.')},
+      complete: () => console.info('Complete')
+    })
   }
 
   mensajeExito(){

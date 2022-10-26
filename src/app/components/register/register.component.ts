@@ -22,15 +22,24 @@ export class RegisterComponent implements OnInit {
   }
 
   register(/*user: User*/){
+    this.loading = true;
+
     const usuario: Usuario = {
       MailUsuario: this.form.value.MailUsuario,
       PasswordUsuario: this.form.value.PasswordUsuario,
       RolUsuario: 'null',
     }
-    this.authService.register(usuario).subscribe(data => {
-      this.mensajeExito();
-      this.router.navigate(['/login']);
-    });
+    this.authService.register(usuario).subscribe({
+      next: () => {
+        this.loading = false;
+        this.mensajeExito();
+        this.router.navigate(['/login']);
+      },
+      error: (e) =>{
+        this.loading = false;
+        alert('Usuario existente')},
+      complete: () => console.info('Complete')
+    })
   }
 
   mensajeExito(){

@@ -1,6 +1,6 @@
 <div class="tittle">
   <button class="registrarse-button" mat-raised-button routerLink="/home">Volver</button>
-  <button class="logout-button" mat-raised-button routerLink="/login">Cerrar Session</button>
+  <button class="logout-button" mat-raised-button (click)="cerrarSession()">Cerrar Session</button>
   <h1>Listado de Productos</h1>
 </div>
 
@@ -66,6 +66,7 @@
         <mat-icon routerLink="/verProducto/{{ element.idProducto }}" class="search" matTooltip="Ver" fontIcon="search"></mat-icon>
         <mat-icon routerLink="/editarProducto/{{ element.idProducto }}" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
         <mat-icon (click)="eliminarProducto(element.idProducto)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
+        <mat-icon (click)="agregarACarrito(element.idProducto)" class="search" matTooltip="Agregar a carrito" fontIcon="add-shopping-cart"></mat-icon>
       </td>
     </ng-container>
 

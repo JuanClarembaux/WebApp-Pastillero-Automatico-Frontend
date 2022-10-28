@@ -182,7 +182,7 @@ section {
     font-size: 20px;
     font-weight: bold;
 }
-._p-qty input#number {
+._p-qty input#quantityNumber {
     text-align: center;
     border: none;
     border-top: 1px solid #fe0000;

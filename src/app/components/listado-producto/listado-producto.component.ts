@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Producto } from 'src/app/interfaces/producto';
 import { ProductoService } from 'src/app/services/producto.service';
 
@@ -17,11 +18,13 @@ export class ListadoProductoComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nombreProducto', 'marcaProducto', 'descripcionProducto', 'categoriaProducto', 'precioProducto', 'skuProducto', 'acciones'];
   dataSource = new MatTableDataSource<Producto>();
   loading: boolean = false;
+  gridColumns = 3;
+  listaCarrito!: Array<Producto>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _snackBar: MatSnackBar, private _productoService: ProductoService) { }
+  constructor(private _snackBar: MatSnackBar, private _productoService: ProductoService, private router: Router) { }
 
   ngOnInit(): void {
     this.obtenerProducto();
@@ -38,19 +41,6 @@ export class ListadoProductoComponent implements OnInit, AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-
-  //  Version deprecada
-  /*obtenerProducto(){
-    this.loading = true;
-    this._productoService.getProductos().subscribe(data => {
-      this.loading = false;
-      this.dataSource.data = data;
-    }, error => {
-      this.loading = false;
-      alert('Ocurrio un Error')
-    })
-  }*/
 
   obtenerProducto(){
     this.loading = true;
@@ -85,13 +75,53 @@ export class ListadoProductoComponent implements OnInit, AfterViewInit {
   }
 
 
+  agregarACarrito(id: number){
+    this.loading = true;
 
-  gridColumns = 3;
+    this._productoService.getProducto(id).subscribe(data => {
+      var productoCarrito = data;
+      this.loading = false;
+
+      //this.listaCarrito.push(productoCarrito);
+
+      this._snackBar.open('El producto agregado al carrito', '', {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
+
+      console.log(productoCarrito);
+
+    });
+
+    //console.log('El carrito contiene: ' + this.listaCarrito[1]);
+
+  }
+
+
+  cerrarSession(){
+    localStorage.removeItem('authToken');
+    this.router.navigate(['/login']);
+  }
+
 
   toggleGridColumns() {
     this.gridColumns = this.gridColumns === 3 ? 4 : 3;
   }
-
-
-
 }
+
+
+
+
+
+  //  Version deprecada
+  /*obtenerProducto(){
+    this.loading = true;
+    this._productoService.getProductos().subscribe(data => {
+      this.loading = false;
+      this.dataSource.data = data;
+    }, error => {
+      this.loading = false;
+      alert('Ocurrio un Error')
+    })
+  }*/

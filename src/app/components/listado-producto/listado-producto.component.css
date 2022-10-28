@@ -4,11 +4,11 @@ table {
 
 td, th
 {
-  width: 18%;
+  width: 15%;
 }
 
 .mat-form-field {
-  font-size: 15px;
+  font-size: 14px;
   width: 100%;
 }
 
@@ -27,8 +27,8 @@ td, th
 }
 
 .agregar{
-  font-size: 10px;
-  line-height: 28px;
+  font-size: 12px;
+  line-height: 30px;
 }
 
 

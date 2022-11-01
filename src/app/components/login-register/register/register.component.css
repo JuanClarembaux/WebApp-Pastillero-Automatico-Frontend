@@ -114,7 +114,7 @@ body {
 }
 .underlay-photo {
   animation: hue-rotate 6s infinite;
-  background: url("../../../../images/Pastillas.jpg");
+  background: url("../../../../../images/Pastillas.jpg");
   background-size: cover;
   z-index: -1;
 }

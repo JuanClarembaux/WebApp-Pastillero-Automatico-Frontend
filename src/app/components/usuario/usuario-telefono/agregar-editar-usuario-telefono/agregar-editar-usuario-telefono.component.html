@@ -1,1 +1,27 @@
-<p>agregar-editar-usuario-telefono works!</p>
+<div class="tittle">
+  <h1>{{operacion}} Telefono</h1>
+</div>
+
+<app-spinner *ngIf="loading"></app-spinner>
+
+<div class="container">
+  <mat-card class="card">
+    <mat-card-subtitle>
+      Datos de Telefono
+    </mat-card-subtitle>
+    <form [formGroup]="form" (ngSubmit)="agregarEditarTelefono()">
+      <mat-grid-list cols="2" rowHeight="80px">
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Telefono Usuario</mat-label>
+            <input formControlName="telefonoUsuario" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <button type="submit" class="btn-aceptar" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
+          <button mat-raised-button (click)="volverPerfil()">Volver</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

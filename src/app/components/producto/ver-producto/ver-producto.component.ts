@@ -61,7 +61,7 @@ export class VerProductoComponent implements OnInit {
   disminuirCantidad(){
     if(this.cantidad > 0) this.cantidad -= 1;
   }
-
+  /*
   createPDF(){
 
     const pdfDefinition: any = {
@@ -143,5 +143,5 @@ export class VerProductoComponent implements OnInit {
     const pdf = pdfMake.createPdf(pdfDefinition);
     pdf.open();
 
-  }
+  }*/
 }

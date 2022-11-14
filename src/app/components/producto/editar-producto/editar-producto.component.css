@@ -64,6 +64,10 @@ td, th
   float: left;
 }
 
+.editar-perfil{
+  float: right;
+}
+
 .logout-button{
   float: right;
   margin-left: 1%;

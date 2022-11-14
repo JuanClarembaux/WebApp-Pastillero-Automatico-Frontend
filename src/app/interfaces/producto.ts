@@ -6,5 +6,5 @@ export interface Producto
   descripcionProducto: string,
   categoriaProducto: string,
   precioProducto: number,
-  skuProducto: string,
+  skuProducto?: string,
 }

@@ -9,7 +9,7 @@
     <mat-card-subtitle>
       Datos del Producto
     </mat-card-subtitle>
-    <form [formGroup]="form" (ngSubmit)="agregarEditarProducto()">
+    <form [formGroup]="form" (ngSubmit)="agregarProducto()">
       <mat-grid-list cols="2" rowHeight="80px">
         <mat-grid-tile>
           <mat-form-field appearance="outline">
@@ -47,6 +47,18 @@
             <input formControlName="skuProducto" matInput autocomplete="off">
           </mat-form-field>
         </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre almacen (opcional)</mat-label>
+            <input formControlName="nombreProductoInventario" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Cantidad (opcional)</mat-label>
+            <input type="number" formControlName="cantidadProductoInventario" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
         <mat-grid-tile [colspan]="2">
           <button type="submit" class="btn-aceptar" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
           <button mat-raised-button routerLink="/listadoProducto">Volver</button>
@@ -55,3 +67,4 @@
     </form>
   </mat-card>
 </div>
+

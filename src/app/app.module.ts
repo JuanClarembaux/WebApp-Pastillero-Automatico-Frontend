@@ -16,7 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 //  Componentes
-import { AgregarEditarProductoComponent } from './components/producto/agregar-editar-producto/agregar-editar-producto.component';
+import { EditarProductoComponent } from './components/producto/editar-producto/editar-producto.component';
 import { ListadoProductoComponent } from './components/producto/listado-producto/listado-producto.component';
 import { VerProductoComponent } from './components/producto/ver-producto/ver-producto.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,11 +35,12 @@ import { VerProductoDescuentoComponent } from './components/producto/producto-de
 import { AgregarEditarProductoDescuentoComponent } from './components/producto/producto-descuento/agregar-editar-producto-descuento/agregar-editar-producto-descuento.component';
 import { VerProductoInventarioComponent } from './components/producto/producto-inventario/ver-producto-inventario/ver-producto-inventario.component';
 import { AgregarEditarProductoInventarioComponent } from './components/producto/producto-inventario/agregar-editar-producto-inventario/agregar-editar-producto-inventario.component';
+import { AgregarProductoComponent } from './components/producto/agregar-producto/agregar-producto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AgregarEditarProductoComponent,
+    EditarProductoComponent,
     ListadoProductoComponent,
     VerProductoComponent,
     LoginComponent,
@@ -56,6 +57,7 @@ import { AgregarEditarProductoInventarioComponent } from './components/producto/
     AgregarEditarProductoDescuentoComponent,
     VerProductoInventarioComponent,
     AgregarEditarProductoInventarioComponent,
+    AgregarProductoComponent,
   ],
   imports: [
     BrowserModule,

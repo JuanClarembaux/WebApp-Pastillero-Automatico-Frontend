@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Producto } from 'src/app/interfaces/producto';
+import { ProductoCreacion } from 'src/app/interfaces/producto.creacion';
 import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
-  selector: 'app-agregar-editar-producto',
-  templateUrl: './agregar-editar-producto.component.html',
-  styleUrls: ['./agregar-editar-producto.component.css']
+  selector: 'app-agregar-producto',
+  templateUrl: './agregar-producto.component.html',
+  styleUrls: ['./agregar-producto.component.css']
 })
-export class AgregarEditarProductoComponent implements OnInit {
+export class AgregarProductoComponent implements OnInit {
 
   loading: boolean = false;
   form: FormGroup;
@@ -24,24 +24,21 @@ export class AgregarEditarProductoComponent implements OnInit {
       descripcionProducto: ['', Validators.required],
       categoriaProducto: ['', Validators.required],
       precioProducto: ['', Validators.required],
-      skuProducto: ['']
+      skuProducto: [''],
+      nombreProductoInventario: ['Almacen Principal'],
+      cantidadProductoInventario: ['']
     })
 
     this.id = Number(this.aRoute.snapshot.paramMap.get('id'));
   }
 
   ngOnInit(): void {
-
-    if(this.id != 0){
-      this.operacion = 'Editar';
-      this.obtenerProducto(this.id);
-    }
   }
 
   obtenerProducto(id: number){
     this.loading = true;
-
     this._productoService.getProducto(id).subscribe( data => {
+      console.log(data);
       this.form.patchValue({
         nombreProducto: data.nombreProducto,
         marcaProducto: data.marcaProducto,
@@ -53,48 +50,22 @@ export class AgregarEditarProductoComponent implements OnInit {
       this.loading = false;
     })
   }
-
-  agregarEditarProducto(){
-    //  Formas de capturar datos
-    //const nombre = this.form.get('nombre')?.value;
-    //const nombre = this.form.value.nombre;
-
-    // Armamos el objeto a enviar
-    const producto: Producto = {
-      nombreProducto: this.form.value.nombreProducto,
-      marcaProducto: this.form.value.marcaProducto,
-      descripcionProducto: this.form.value.descripcionProducto,
-      categoriaProducto: this.form.value.categoriaProducto,
-      precioProducto: this.form.value.precioProducto,
-      skuProducto: this.form.value.skuProducto
+  agregarProducto(){
+    const productoAgregar: ProductoCreacion = {
+      NombreProducto: this.form.value.nombreProducto,
+      MarcaProducto: this.form.value.marcaProducto,
+      DescripcionProducto: this.form.value.descripcionProducto,
+      CategoriaProducto: this.form.value.categoriaProducto,
+      PrecioProducto: this.form.value.precioProducto,
+      SkuProducto: this.form.value.skuProducto,
+      NombreProductoInventario: this.form.value.nombreProductoInventario,
+      CantidadProductoInventario: this.form.value.cantidadProductoInventario,
     }
-
-    if(this.id != 0){
-      producto.idProducto = this.id;
-      this.editarProducto(this.id, producto);
-    }
-    else{
-      this.agregarProducto(producto);
-    }
-  }
-
-  editarProducto(id: number, producto: Producto){
-    this.loading = true;
-    this._productoService.updateProducto(id, producto).subscribe( () => {
-      this.loading = false;
-      this.mensajeExito('actualizado');
-      this.router.navigate(['/listadoProducto']);
-    })
-  }
-
-  agregarProducto(producto: Producto){
-    // Enviamos el objeto al Back-End
-    this._productoService.addProducto(producto).subscribe(data => {
+    this._productoService.addProducto(productoAgregar).subscribe(data => {
       this.mensajeExito('registrado');
       this.router.navigate(['/listadoProducto']);
     })
   }
-
   mensajeExito(texto: string){
     this._snackBar.open(`El producto fue ${texto} con exito`, '', {
       duration: 1500,
@@ -102,5 +73,4 @@ export class AgregarEditarProductoComponent implements OnInit {
       verticalPosition: 'top'
     });
   }
-
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Usuario } from 'src/app/interfaces/usuario';
+import { UsuarioRegister } from 'src/app/interfaces/usuario.register';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -17,17 +17,22 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private router: Router, private aRoute: ActivatedRoute) {
     this.form = this.fb.group({
       MailUsuario: ['', Validators.required, Validators.email],
-      PasswordUsuario: ['', Validators.required]
+      PasswordUsuario: ['', Validators.required],
+      NombreUsuario: [''],
+      ApellidoUsuario: [''],
+      FechaNacimiento: ['']
     })
   }
 
-  register(/*user: User*/){
+  register(){
     this.loading = true;
 
-    const usuario: Usuario = {
-      MailUsuario: this.form.value.MailUsuario,
-      PasswordUsuario: this.form.value.PasswordUsuario,
-      RolUsuario: 'null',
+    const usuario: UsuarioRegister = {
+      mailUsuario: this.form.value.mailUsuario,
+      passwordUsuario: this.form.value.passwordUsuario,
+      nombreUsuario: this.form.value.nombreUsuario,
+      apellidoUsuario: this.form.value.apellidoUsuario,
+      fechaNacimientoUsuario: this.form.value.fechaNacimientoUsuario
     }
     this.authService.register(usuario).subscribe({
       next: () => {
@@ -41,7 +46,6 @@ export class RegisterComponent implements OnInit {
       complete: () => console.info('Complete')
     })
   }
-
   mensajeExito(){
     this._snackBar.open('El usuario fue registrado con exito', '', {
       duration: 1500,
@@ -49,8 +53,6 @@ export class RegisterComponent implements OnInit {
       verticalPosition: 'top'
     });
   }
-
   ngOnInit(): void {
   }
-
 }

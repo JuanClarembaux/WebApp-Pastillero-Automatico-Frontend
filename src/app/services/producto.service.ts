@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Producto } from '../interfaces/producto';
+import { ProductoCreacion } from '../interfaces/producto.creacion';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,8 @@ export class ProductoService {
     return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`)
   }
 
-  addProducto(producto: Producto): Observable<Producto>{
-    return this.http.post<Producto>(`${this.myAppUrl}${this.myApiUrl}`, producto)
+  addProducto(ProductoCreacion: ProductoCreacion): Observable<ProductoCreacion>{
+    return this.http.post<ProductoCreacion>(`${this.myAppUrl}${this.myApiUrl}`, ProductoCreacion)
   }
 
   updateProducto(id: number, producto: Producto): Observable<void>{

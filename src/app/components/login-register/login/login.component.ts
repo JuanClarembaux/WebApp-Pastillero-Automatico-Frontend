@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { AuthService } from 'src/app/services/auth.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -14,25 +15,34 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private router: Router, private aRoute: ActivatedRoute) {
+  //mail: string;
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private router: Router, private aRoute: ActivatedRoute, private _usuarioService: UsuarioService) {
     this.form = this.fb.group({
-      MailUsuario: ['', Validators.required, Validators.email],
-      PasswordUsuario: ['', Validators.required]
+      mailUsuario: ['', Validators.required, Validators.email],
+      passwordUsuario: ['', Validators.required]
     })
+    //this.mail = String(localStorage.getItem('mailUsuario'));
   }
 
   login(/*user: User*/){
     this.loading = true;
 
     const usuario: Usuario = {
-      MailUsuario: this.form.value.MailUsuario,
-      PasswordUsuario: this.form.value.PasswordUsuario,
-      RolUsuario: 'null',
+      mailUsuario: this.form.value.mailUsuario,
+      passwordUsuario: this.form.value.passwordUsuario,
+      rolUsuario: ''
     }
     this.authService.login(usuario).subscribe({
       next: (token: string) => {
         this.loading = false;
+
+        this._usuarioService.getUsuarioByEmail(usuario.mailUsuario).subscribe( data => {
+          localStorage.setItem('idUsuario', String(data.idUsuario))
+        })
+
         localStorage.setItem('authToken', token);
+        localStorage.setItem('mailUsuario', usuario.mailUsuario);
         this.mensajeExito();
         this.router.navigate(['/home']);
       },

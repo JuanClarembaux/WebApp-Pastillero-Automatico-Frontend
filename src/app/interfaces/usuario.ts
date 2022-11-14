@@ -1,5 +1,6 @@
 export interface Usuario{
-  MailUsuario: string,
-  PasswordUsuario: string,
-  RolUsuario: string,
+  idUsuario?: number,
+  mailUsuario: string,
+  passwordUsuario: string,
+  rolUsuario: string
 }

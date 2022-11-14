@@ -7,8 +7,11 @@
       <i class="fa fa-user fa-stack-1x"></i>
     </span>
   </p>
-  <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" formControlName="MailUsuario" matInput autocomplete="off">
-  <input type="password" class="login-password" required="true" placeholder="Password" formControlName="PasswordUsuario" matInput autocomplete="off">
+  <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" formControlName="mailUsuario" matInput autocomplete="off">
+  <input type="password" class="login-password" required="true" placeholder="Password" formControlName="passwordUsuario" matInput autocomplete="off">
+  <input type="text" class="login-username" autofocus="true" required="false" placeholder="Nombre" formControlName="nombreUsuario" matInput autocomplete="off">
+  <input type="text" class="login-password" required="false" placeholder="Apellido" formControlName="apellidoUsuario" matInput autocomplete="off">
+  <input type="date" class="login-username" autofocus="true" required="false" placeholder="FechaNacimiento" formControlName="fechaNacimientoUsuario" matInput autocomplete="off">
   <button type="submit" class="btn-ingresar" [disabled]="form.invalid" mat-raised-button color="primary">Registrar</button>
 </form>
 <button class="registrarse-button" mat-raised-button routerLink="/login">Volver</button>

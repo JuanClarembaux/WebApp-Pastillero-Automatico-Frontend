@@ -1,1 +1,33 @@
-<p>agregar-editar-producto-descuento works!</p>
+<div class="tittle">
+  <h1>{{operacion}} Descuento</h1>
+</div>
+
+<app-spinner *ngIf="loading"></app-spinner>
+
+<div class="container">
+  <mat-card class="card">
+    <mat-card-subtitle>
+      Datos del Descuento
+    </mat-card-subtitle>
+    <form [formGroup]="form" (ngSubmit)="agregarEditarDescuento()">
+      <mat-grid-list cols="2" rowHeight="80px">
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre del Descuento</mat-label>
+            <input formControlName="nombreProductoDescuento" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Porcentaje de Descuento</mat-label>
+            <input formControlName="porcentajeProductoDescuento" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <button type="submit" class="btn-aceptar" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
+          <button mat-raised-button routerLink="/editarProducto/{{id}}">Volver</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

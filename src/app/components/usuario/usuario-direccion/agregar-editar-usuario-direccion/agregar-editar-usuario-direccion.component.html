@@ -1,1 +1,45 @@
-<p>agregar-editar-usuario-direccion works!</p>
+<div class="tittle">
+  <h1>{{operacion}} Direccion</h1>
+</div>
+
+<app-spinner *ngIf="loading"></app-spinner>
+
+<div class="container">
+  <mat-card class="card">
+    <mat-card-subtitle>
+      Datos de Direccion
+    </mat-card-subtitle>
+    <form [formGroup]="form" (ngSubmit)="agregarEditarDireccion()">
+      <mat-grid-list cols="2" rowHeight="80px">
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Direccion Usuario</mat-label>
+            <input formControlName="direccionUsuario" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Ciudad</mat-label>
+            <input formControlName="ciudad" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Provincia</mat-label>
+            <input formControlName="provincia" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Pais</mat-label>
+            <input formControlName="pais" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <button type="submit" class="btn-aceptar" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
+          <button mat-raised-button (click)="volverPerfil()">Volver</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

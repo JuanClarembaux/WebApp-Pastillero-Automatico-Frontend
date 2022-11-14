@@ -104,24 +104,12 @@ export class ListadoProductoComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/login']);
   }
 
+  editarPerfil(){
+    this.router.navigate(['usuario/editarUsuario/' + localStorage.getItem('idUsuario')]);
+  }
+
 
   toggleGridColumns() {
     this.gridColumns = this.gridColumns === 3 ? 4 : 3;
   }
 }
-
-
-
-
-
-  //  Version deprecada
-  /*obtenerProducto(){
-    this.loading = true;
-    this._productoService.getProductos().subscribe(data => {
-      this.loading = false;
-      this.dataSource.data = data;
-    }, error => {
-      this.loading = false;
-      alert('Ocurrio un Error')
-    })
-  }*/

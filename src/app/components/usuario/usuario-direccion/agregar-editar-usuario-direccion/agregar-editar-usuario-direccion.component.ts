@@ -69,19 +69,31 @@ export class AgregarEditarUsuarioDireccionComponent implements OnInit {
 
   editarDireccion(id: number, usuarioDireccion: UsuarioDireccion){
     this.loading = true;
-    this._usuarioDireccionService.updateDireccion(id, usuarioDireccion).subscribe( () => {
-      this.loading = false;
-      this.mensajeExito('actualizado');
-      this.volverPerfil();
+    this._usuarioDireccionService.updateDireccion(id, usuarioDireccion).subscribe({
+      next: () => {
+        this.loading = false;
+        this.mensajeExito('actualizada');
+        this.volverPerfil();
+      },
+      error: (e) => {
+        this.loading = false;
+        alert('Direccion existente')},
+      complete: () => console.info('Complete')
     })
   }
 
   agregarDireccion(usuarioDireccion: UsuarioDireccion){
     this.loading = true;
-    this._usuarioDireccionService.addUsuarioDireccion(usuarioDireccion).subscribe(data => {
-      this.loading = false;
-      this.mensajeExito('registrado');
-      this.volverPerfil();
+    this._usuarioDireccionService.addUsuarioDireccion(usuarioDireccion).subscribe({
+      next: () => {
+        this.loading = false;
+        this.mensajeExito('registrada');
+        this.volverPerfil();
+      },
+      error: (e) => {
+        this.loading = false;
+        alert('Direccion existente')},
+      complete: () => console.info('Complete')
     })
   }
 

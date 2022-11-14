@@ -31,17 +31,19 @@ export class LoginComponent implements OnInit {
     const usuario: Usuario = {
       mailUsuario: this.form.value.mailUsuario,
       passwordUsuario: this.form.value.passwordUsuario,
-      rolUsuario: ''
+      rolUsuario:''
     }
     this.authService.login(usuario).subscribe({
       next: (token: string) => {
         this.loading = false;
 
+        localStorage.setItem('authToken', token);
+
         this._usuarioService.getUsuarioByEmail(usuario.mailUsuario).subscribe( data => {
           localStorage.setItem('idUsuario', String(data.idUsuario))
+          localStorage.setItem('rolUsuario', data.rolUsuario);
         })
 
-        localStorage.setItem('authToken', token);
         localStorage.setItem('mailUsuario', usuario.mailUsuario);
         this.mensajeExito();
         this.router.navigate(['/home']);

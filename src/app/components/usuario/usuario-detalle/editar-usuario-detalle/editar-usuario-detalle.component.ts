@@ -189,6 +189,10 @@ export class EditarUsuarioDetalleComponent implements OnInit, AfterViewInit {
     this.router.navigate(['usuario/editarUsuario/' + localStorage.getItem('idUsuario') + '/editar-usuario-telefono/' + id]);
   }
 
+  volverVerPerfil(){
+    this.router.navigate(['usuario/verUsuario/' + localStorage.getItem('idUsuario')]);
+  }
+
   cerrarSession(){
     localStorage.removeItem('authToken');
     this.router.navigate(['/login']);

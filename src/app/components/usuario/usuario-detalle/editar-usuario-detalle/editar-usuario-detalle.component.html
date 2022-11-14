@@ -1,5 +1,5 @@
 <div class="tittle">
-  <button class="registrarse-button" mat-raised-button routerLink="/listadoProducto">Volver</button>
+  <button class="registrarse-button" mat-raised-button (click)="volverVerPerfil()">Volver</button>
   <button class="logout-button" mat-raised-button (click)="cerrarSession()">Cerrar Session</button>
   <h1>Editar Usuario</h1>
 </div>
@@ -45,7 +45,6 @@
           </mat-grid-tile>
           <mat-grid-tile [colspan]="2">
             <button type="submit" class="btn-aceptar" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
-            <button mat-raised-button routerLink="/listadoProducto">Volver</button>
           </mat-grid-tile>
         </mat-grid-list>
       </form>

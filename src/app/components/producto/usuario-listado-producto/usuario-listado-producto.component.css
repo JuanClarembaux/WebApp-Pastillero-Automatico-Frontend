@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+}
+
+td, th
+{
+  width: 19%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.search{
+  cursor: pointer;
+}
+
+.agregar{
+  font-size: 12px;
+  line-height: 30px;
+}
+
+
+.registrarse-button{
+  float: left;
+}
+
+.editar-perfil{
+  float: right;
+}
+
+.logout-button{
+  float: right;
+  margin-left: 1%;
+}

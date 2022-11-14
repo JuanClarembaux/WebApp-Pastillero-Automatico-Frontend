@@ -1,0 +1,83 @@
+.data-tittle
+{
+  padding: 25px;
+  background-color: rgb(28, 113, 211);
+  text-align: center;
+  color: white;
+  margin-bottom: 2%;
+}
+
+.card{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.mat-form-field{
+  width: 50%;
+  margin: 5px;
+}
+
+.btn-aceptar{
+  margin-right: 20px;
+}
+
+.container-datos-usuario{
+  margin: 0.5rem;
+  padding: 0.5rem;
+  float: left;
+  width: 45%;
+  height: 95%;
+  cursor: pointer;
+}
+
+#direccion-section{
+  margin-right: 1rem;
+}
+#telefono-section{
+}
+
+table {
+  width: 100%;
+}
+
+td, th
+{
+  width: 15%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.search{
+  cursor: pointer;
+}
+
+.edit{
+  cursor: pointer;
+  color: #1878B0;
+}
+
+.delete{
+  cursor: pointer;
+  color: #E15639;
+}
+
+.agregar{
+  font-size: 12px;
+  line-height: 30px;
+}
+
+.registrarse-button{
+  float: left;
+}
+
+.logout-button{
+  float: right;
+  margin-left: 1%;
+}
+
+.editar-perfil{
+  float: right;
+}

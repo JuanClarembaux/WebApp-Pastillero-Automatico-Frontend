@@ -36,6 +36,7 @@ import { AgregarEditarProductoDescuentoComponent } from './components/producto/p
 import { VerProductoInventarioComponent } from './components/producto/producto-inventario/ver-producto-inventario/ver-producto-inventario.component';
 import { AgregarEditarProductoInventarioComponent } from './components/producto/producto-inventario/agregar-editar-producto-inventario/agregar-editar-producto-inventario.component';
 import { AgregarProductoComponent } from './components/producto/agregar-producto/agregar-producto.component';
+import { UsuarioListadoProductoComponent } from './components/producto/usuario-listado-producto/usuario-listado-producto.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AgregarProductoComponent } from './components/producto/agregar-producto
     VerProductoInventarioComponent,
     AgregarEditarProductoInventarioComponent,
     AgregarProductoComponent,
+    UsuarioListadoProductoComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/login-register/register/register
 import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ListadoProductoComponent } from './components/producto/listado-producto/listado-producto.component';
+import { UsuarioListadoProductoComponent } from './components/producto/usuario-listado-producto/usuario-listado-producto.component';
 import { AgregarProductoComponent } from './components/producto/agregar-producto/agregar-producto.component';
 import { EditarProductoComponent } from './components/producto/editar-producto/editar-producto.component';
 import { VerProductoComponent } from './components/producto/ver-producto/ver-producto.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'listadoProducto', component: ListadoProductoComponent },
+  { path: 'usuario/listadoProducto', component: UsuarioListadoProductoComponent },
   { path: 'agregarProducto', component: AgregarProductoComponent },
   { path: 'editarProducto/:id', component: EditarProductoComponent },
   { path: 'verProducto/:id', component: VerProductoComponent },
@@ -30,7 +32,7 @@ const routes: Routes = [
   { path: 'editarProducto/:id/editar-producto-inventario/:idInventario', component: AgregarEditarProductoInventarioComponent },
   { path: 'editarProducto/:id/agregar-producto-descuento', component: AgregarEditarProductoDescuentoComponent },
   { path: 'editarProducto/:id/editar-producto-descuento/:idDescuento', component: AgregarEditarProductoDescuentoComponent },
-  { path: 'usuario/verUsuario', component: VerUsuarioDetalleComponent },
+  { path: 'usuario/verUsuario/:id', component: VerUsuarioDetalleComponent },
   { path: 'usuario/editarUsuario/:id', component: EditarUsuarioDetalleComponent },
   { path: 'usuario/editarUsuario/:id/agregar-usuario-direccion', component: AgregarEditarUsuarioDireccionComponent },
   { path: 'usuario/editarUsuario/:id/editar-usuario-direccion/:idDireccion', component: AgregarEditarUsuarioDireccionComponent },

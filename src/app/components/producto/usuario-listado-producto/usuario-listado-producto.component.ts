@@ -9,13 +9,13 @@ import { ProductoService } from 'src/app/services/producto.service';
 
 
 @Component({
-  selector: 'app-listado-producto',
-  templateUrl: './listado-producto.component.html',
-  styleUrls: ['./listado-producto.component.css']
+  selector: 'app-usuario-listado-producto',
+  templateUrl: './usuario-listado-producto.component.html',
+  styleUrls: ['./usuario-listado-producto.component.css']
 })
-export class ListadoProductoComponent implements OnInit, AfterViewInit {
+export class UsuarioListadoProductoComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['nombreProducto', 'marcaProducto', 'descripcionProducto', 'categoriaProducto', 'precioProducto', 'skuProducto', 'acciones'];
+  displayedColumns: string[] = ['nombreProducto', 'marcaProducto', 'descripcionProducto', 'categoriaProducto', 'precioProducto', 'acciones'];
   dataSource = new MatTableDataSource<Producto>();
   loading: boolean = false;
   gridColumns = 3;

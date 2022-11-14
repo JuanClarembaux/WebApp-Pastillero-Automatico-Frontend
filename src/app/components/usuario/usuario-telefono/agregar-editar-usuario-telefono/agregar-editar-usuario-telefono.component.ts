@@ -59,19 +59,31 @@ export class AgregarEditarUsuarioTelefonoComponent implements OnInit {
 
   editarTelefono(id: number, usuarioTelefono: UsuarioTelefono){
     this.loading = true;
-    this._usuarioTelefonoService.updateTelefono(id, usuarioTelefono).subscribe( () => {
-      this.loading = false;
-      this.mensajeExito('actualizado');
-      this.volverPerfil();
+    this._usuarioTelefonoService.updateTelefono(id, usuarioTelefono).subscribe({
+      next: () => {
+        this.loading = false;
+        this.mensajeExito('actualizado');
+        this.volverPerfil();
+      },
+      error: (e) => {
+        this.loading = false;
+        alert('Telefono existente')},
+      complete: () => console.info('Complete')
     })
   }
 
   agregarTelefono(usuarioTelefono: UsuarioTelefono){
     this.loading = true;
-    this._usuarioTelefonoService.addUsuarioTelefono(usuarioTelefono).subscribe(data => {
-      this.loading = false;
-      this.mensajeExito('registrado');
-      this.volverPerfil();
+    this._usuarioTelefonoService.addUsuarioTelefono(usuarioTelefono).subscribe({
+      next: () => {
+        this.loading = false;
+        this.mensajeExito('registrado');
+        this.volverPerfil();
+      },
+      error: (e) => {
+        this.loading = false;
+        alert('Telefono existente')},
+      complete: () => console.info('Complete')
     })
   }
 

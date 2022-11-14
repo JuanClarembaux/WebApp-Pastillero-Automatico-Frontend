@@ -61,9 +61,17 @@ export class AgregarProductoComponent implements OnInit {
       NombreProductoInventario: this.form.value.nombreProductoInventario,
       CantidadProductoInventario: this.form.value.cantidadProductoInventario,
     }
-    this._productoService.addProducto(productoAgregar).subscribe(data => {
-      this.mensajeExito('registrado');
-      this.router.navigate(['/listadoProducto']);
+    this.loading = true;
+    this._productoService.addProducto(productoAgregar).subscribe({
+      next: () => {
+        this.loading = false;
+        this.mensajeExito('registrado');
+        this.router.navigate(['/listadoProducto']);
+      },
+      error: (e) => {
+        this.loading = false;
+        alert('Producto existente')},
+      complete: () => console.info('Complete')
     })
   }
   mensajeExito(texto: string){

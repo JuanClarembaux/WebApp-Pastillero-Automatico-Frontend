@@ -20,7 +20,7 @@ export class AgregarEditarProductoInventarioComponent implements OnInit {
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private _productoInventarioService: ProductoInventarioService, private router: Router, private aRoute: ActivatedRoute) {
     this.form = this.fb.group({
       nombreProductoInventario: ['', Validators.required],
-      cantidadProductoInventario: ['0'],
+      cantidadProductoInventario: ['0', Validators.required],
     })
 
     this.id = Number(this.aRoute.snapshot.paramMap.get('id'));
@@ -63,19 +63,32 @@ export class AgregarEditarProductoInventarioComponent implements OnInit {
 
   editarInventario(id: number, productoInventario: ProductoInventario){
     this.loading = true;
-    this._productoInventarioService.updateInventario(id, productoInventario).subscribe( () => {
-      this.loading = false;
-      this.mensajeExito('actualizado');
-      this.router.navigate(['/editarProducto/' + this.id]);
+
+    this._productoInventarioService.updateInventario(id, productoInventario).subscribe({
+      next: () => {
+        this.loading = false;
+        this.mensajeExito('actualizado');
+        this.router.navigate(['/editarProducto/' + this.id]);
+      },
+      error: (e) => {
+        this.loading = false;
+        alert('Almacen existente')},
+      complete: () => console.info('Complete')
     })
   }
 
   agregarInventario(productoInventario: ProductoInventario){
     this.loading = true;
-    this._productoInventarioService.addInventario(productoInventario).subscribe(data => {
-      this.loading = false;
-      this.mensajeExito('registrado');
-      this.router.navigate(['/editarProducto/' + this.id]);
+    this._productoInventarioService.addInventario(productoInventario).subscribe({
+      next: () => {
+        this.loading = false;
+        this.mensajeExito('registrado');
+        this.router.navigate(['/editarProducto/' + this.id]);
+      },
+      error: (e) => {
+        this.loading = false;
+        alert('Almacen existente')},
+      complete: () => console.info('Complete')
     })
   }
   mensajeExito(texto: string){

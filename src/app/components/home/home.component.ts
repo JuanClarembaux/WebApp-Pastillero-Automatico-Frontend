@@ -13,6 +13,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  tienda(){
+    if(localStorage.getItem('rolUsuario') == 'admin') this.router.navigate(['/listadoProducto']);
+
+    if(localStorage.getItem('rolUsuario') == 'usuario') this.router.navigate(['usuario/listadoProducto']);
+  }
+
   cerrarSession(){
     localStorage.removeItem('authToken');
     this.router.navigate(['/login']);

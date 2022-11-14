@@ -16,11 +16,11 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private router: Router, private aRoute: ActivatedRoute) {
     this.form = this.fb.group({
-      MailUsuario: ['', Validators.required, Validators.email],
-      PasswordUsuario: ['', Validators.required],
-      NombreUsuario: [''],
-      ApellidoUsuario: [''],
-      FechaNacimiento: ['']
+      mailUsuario: ['', Validators.required, Validators.email],
+      passwordUsuario: ['', Validators.required],
+      nombreUsuario: [''],
+      apellidoUsuario: [''],
+      fechaNacimientoUsuario: ['']
     })
   }
 

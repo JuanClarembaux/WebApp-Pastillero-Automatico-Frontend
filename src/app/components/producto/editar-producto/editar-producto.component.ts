@@ -100,10 +100,16 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
     if(this.id != 0){
       productoEditar.idProducto = this.id;
       this.loading = true;
-      this._productoService.updateProducto(this.id, productoEditar).subscribe( () => {
-        this.loading = false;
-        this.mensajeExito('actualizado');
-        this.router.navigate(['/listadoProducto']);
+      this._productoService.updateProducto(this.id, productoEditar).subscribe({
+        next: () => {
+          this.loading = false;
+          this.mensajeExito('actualizado');
+          this.router.navigate(['/listadoProducto']);
+        },
+        error: (e) => {
+          this.loading = false;
+          alert('Producto existente')},
+        complete: () => console.info('Complete')
       })
     }
   }
